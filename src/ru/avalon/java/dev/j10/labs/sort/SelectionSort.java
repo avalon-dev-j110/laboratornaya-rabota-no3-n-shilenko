@@ -21,5 +21,25 @@ public class SelectionSort implements Sort {
         /*
          * TODO(Студент): Реализовать метод sort класса SelectionSort
          */
+        for (int i = 0; i < array.length; i++) {
+            swap(array, i, searchIndexOfMin(array, i));
+        }
+    }
+    private int searchIndexOfMin(int[] array, int start) {
+        int index = start;
+        int min = array[start];
+        while (start < array.length) {
+            if (array[start] < min) {
+                min = array[start];
+                index = start;
+            }
+            start++;
+        }
+        return index;
+    }
+    private void swap(int[] array, int targetIndex, int sourceIndex){
+        int temp = array[targetIndex];
+        array[targetIndex] = array[sourceIndex];
+        array[sourceIndex] = temp;
     }
 }

@@ -24,5 +24,22 @@ public class ShellSort implements Sort {
         /*
          * TODO(Студент): Реализовать метод sort класса ShellSort
          */
+        int outer, inner, temp, step;
+        step = 1;
+        while (step <= array.length / 3) {
+            step = step * 3 + 1;
+        }
+        while (step > 0) {
+            for (outer = step; outer < array.length; outer++) {
+                temp = array[outer];
+                inner = outer;
+                while (inner > step - 1 && array[inner - step] >= temp) {
+                    array[inner] = array[inner - step];
+                    inner -= step;
+                }
+                array[inner] = temp;
+            }
+            step = (step - 1) / 3;
+        }
     }
 }
